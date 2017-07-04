@@ -6,7 +6,6 @@ services:
       - .:/code
     depends_on:
       - postgres
-      - redis
   postgres:
     image: postgres:9.6
     ports:
@@ -14,5 +13,3 @@ services:
     environment:
      POSTGRES_PASSWORD: getlunch
      POSTGRES_USER: luncher
-  redis:
-    image: redis

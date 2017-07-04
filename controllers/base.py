@@ -1,4 +1,5 @@
 from cement.core.controller import CementBaseController, expose
+from models.User import User
 from sqlalchemy import create_engine
 
 
@@ -8,6 +9,13 @@ class BaseController(CementBaseController):
         description = 'Controller for running the main app'
         arguments = []
 
-    @expose(help="This command is the base command")
+    @expose(aliases=['get-lunch'], help="Group existing users for lunch")
     def default(self):
-        self.app.log.info('Inside default command')
+        try:
+            session = self.app.session()
+            users = session.query(User).all()
+            for user in users:
+                print(user.name)
+
+        except Exception as e:
+            print(e)
