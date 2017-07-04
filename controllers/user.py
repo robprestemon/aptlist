@@ -25,8 +25,8 @@ class UserController(CementBaseController):
             self.add_user(name, email)
 
     def add_user(self, name, email):
+        session = self.app.session()
         try:
-            session = self.app.session()
             new_user = User(name=name, email=email)
             session.add(new_user)
             session.commit()
@@ -36,5 +36,6 @@ class UserController(CementBaseController):
             )
         except IntegrityError:
             self.app.log.error('User with email {email} already exists.'.format(email=email))
+            session.rollback()
         except Exception as e:
             print(e)

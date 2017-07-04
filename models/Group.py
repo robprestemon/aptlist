@@ -8,6 +8,7 @@ users_has_groups = Table('users_has_groups', Base.metadata,
                     Column('group_id', Integer, ForeignKey('groups.id'))
                     )
 
+
 class Group(Base):
     __tablename__ = 'groups'
     id = Column(Integer, Sequence('groups_id_seq'), primary_key=True)
