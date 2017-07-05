@@ -5,7 +5,13 @@ So as you can tell from the code, I got a little excited with setting up the env
 
 Other than that, I set up basic controllers and models to manage users. I went down the path of persistent groups, but backed off;  I realized after I set it up that it was way out of scope for the actual problem.
 
-## Dependencies
+## Dependencies and Tools Used
+- Python 3.6
+- Cement (http://builtoncement.com/)
+- Alembic (http://alembic.zzzcomputing.com/en/latest/)
+- SQLAlchemy
+- Docker with Docker Compose
+- Postgresql 9.6
 
 You should be able to run this program as long as you have Docker and Docker Compose installed.  You may also need Python 3.6 on your host machine.
 
