@@ -1,4 +1,4 @@
-#Apartment List Test
+# Apartment List Test
 
 ## Approach to this problem
 So as you can tell from the code, I got a little excited with setting up the environment.  I know it wasn't necessary for this particular test but I had been researching about Docker and CLI applications, so I wanted to try it out.
