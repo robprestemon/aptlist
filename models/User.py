@@ -14,6 +14,6 @@ class User(Base):
     created = Column(DateTime, default=datetime.datetime.utcnow)
 
     def __repr__(self):
-        return "<User(name='%s', email='%s', created='%s')>" % (
-            self.name, self.email, self.created)
+        return "<User(name='%s', email='%s', created='%s', group='%s')>" % (
+            self.name, self.email, self.created, self.groups)
 

@@ -1,7 +1,8 @@
 from cement.core.controller import CementBaseController, expose
 from models.User import User
+from models.Group import Group
 from sqlalchemy.exc import IntegrityError
-
+from sqlalchemy.sql import func, desc
 
 class UserController(CementBaseController):
     class Meta:
@@ -23,6 +24,18 @@ class UserController(CementBaseController):
 
         if name is not None and email is not None:
             self.add_user(name, email)
+
+    @expose(help="This command shows info for a user")
+    def show(self):
+        email = self.app.pargs.email
+        session = self.app.session()
+        user = session.query(User.id, User.name, Group.created, Group.id)\
+            .join(User.groups) \
+            .filter(User.email==email)\
+            .order_by(desc(Group.created))\
+            .limit(1).one()
+
+        self.app.log.info(user)
 
     def add_user(self, name, email):
         session = self.app.session()

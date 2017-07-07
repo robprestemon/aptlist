@@ -1,5 +1,6 @@
 from cement.core.controller import CementBaseController, expose
 from models.User import User
+from models.Group import Group
 from random import shuffle
 
 
@@ -47,6 +48,10 @@ class BaseController(CementBaseController):
                 num_users -= group_size
 
             for group in groups:
+                new_group = Group()
+                for user in group:
+                    new_group.users.append(user)
+                session.commit()
                 print(group, '\n')
 
         except Exception as e:
